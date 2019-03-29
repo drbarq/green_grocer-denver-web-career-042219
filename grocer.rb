@@ -191,7 +191,6 @@ require 'pry'
 
 def checkout(cart, coupons)
 
-  #consolidate_cart(cart)
 
   apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
 
