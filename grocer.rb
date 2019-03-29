@@ -179,6 +179,8 @@ def apply_clearance(cart)
 #  cart.each
   binding.pry
 
+  
+
 
   # code here
 end
