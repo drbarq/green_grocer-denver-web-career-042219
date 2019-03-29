@@ -27,9 +27,10 @@ return cart_hash
 end
 
 #I think consolidate the cart first, bash up coupons, return a new hash
-
+=begin
 require 'pry'
 def apply_coupons(cart, coupons)
+binding.pry
 
 cart_hash = Hash.new
 #consolidate_cart first
@@ -46,6 +47,7 @@ cart_hash = Hash.new
         if !cart_hash[item].has_key?(k)
           cart_hash[item][k] = v
         end
+
       end
     end
   end
@@ -65,27 +67,176 @@ cart_hash = Hash.new
         cart_coupon[item] = item_hash
       end
 
+
+    #  binding.pry
+
       if coupons_items.include?(item)
-        item_hash.each do |item_k, item_v|
-          coupons.each do |element|
-            element.each do |coupon_k, coupon_v|
-              if item_hash[:count] > element[:num]
+        coupons.find do |element| #using find here returns the correct price on the coupon item
+          if element[:item] == item
+            if item_hash[:count] >= element[:num] #check to see if there are more items than the coupon covers
+                item_count = item_hash[:count]
 
-              end 
+                cart_coupon["#{item} W/ COUPON"] = {}
+                cart_coupon["#{item} W/ COUPON"][:price] = element[:cost]
+                cart_coupon["#{item} W/ COUPON"][:clearance] = item_hash[:clearance]
+                cart_coupon["#{item} W/ COUPON"][:count] = 1
 
+                item_count =  item_count - element[:num]
 
+              if item_count > 0 # build a new key:value pair based on the remaining items
+                  cart_coupon[item] = {}
+                  cart_coupon[item][:price] = item_hash[:price]
+                  cart_coupon[item][:clearance] = item_hash[:clearance]
+                  cart_coupon[item][:count] = item_count
+                  item_count = 0
+                end
+              end
+            if item_hash[:count] < element[:num]
+              cart_coupon[item] = item_hash
+            end
 
-        binding.pry
+          end
+        end
       end
-      end
-      end
-      end
 
+    puts cart_coupon
+    return cart_coupon
+      end
+end
+=end
+=begin
+#man that was a doozy, applied what I learned from other labs to create and modify the hashes.
+#a space in the w/coupon sent me on a goose chase for a while
+#interesting to think about how to structure and explore data structures, and what to plan for
+require 'pry'
+def apply_coupons(cart, coupons)
+  cart_coupon = Hash.new
+  coupons_items = Array.new
+  original_cart = cart
+
+    coupons.each do |element| # grab each item name from the coupon hash
+      coupons_items << element[:item]
     end
-puts cart_coupon
+
+    cart.each do |item, item_hash|
+      if !coupons_items.include?(item)
+        cart[item] = item_hash
+      end
+      if coupons_items.include?(item)
+        coupons.find do |element| #using find here returns the correct price on the coupon item
+          if element[:item] == item
+            if item_hash[:count] >= element[:num] #check to see if there are more items than the coupon covers
+                item_count = item_hash[:count]
+                cart_coupon = Hash.new
+                cart_coupon["#{item} W/COUPON"] = {}
+                cart_coupon["#{item} W/COUPON"][:price] = element[:cost]
+                cart_coupon["#{item} W/COUPON"][:clearance] = item_hash[:clearance]
+                cart_coupon["#{item} W/COUPON"][:count] = 1
+                cart =  cart.merge(cart_coupon)
+                item_count =  item_count - element[:num]
+
+              if item_count >= 0 # build a new key:value pair based on the remaining items
+                  cart[item] = {}
+                  cart[item][:price] = item_hash[:price]
+                  cart[item][:clearance] = item_hash[:clearance]
+                  cart[item][:count] = item_count
+                  #item_count = 0
+                end
+              end
+            if item_hash[:count] < element[:num]
+              cart[item] = item_hash
+            end
+          end
+        end
+      end
+    end
+    puts original_cart
+    puts coupons
+    puts cart
+  return cart
+end
+=end
+#everything works but the last one, gonna try a while loop
+
+# it all works except the last question.  basing things off that coupons instance array is a bitch.  
+require 'pry'
+def apply_coupons(cart, coupons)
+  #cart_coupon = Hash.new
+  coupons_items = Array.new
+  original_cart = cart
+  original_coupons = coupons
+
+    coupons.each do |element| # grab each item name from the coupon hash
+      coupons_items << element[:item]
+    end
+
+    cart.each do |item, item_hash|
+      if !coupons_items.include?(item)
+        cart[item] = item_hash
+      end
+
+      if coupons_items.include?(item)
+        coupons.each do |element| #using find here returns the correct price on the coupon item
+          #remove that coupon from the array
+         if element[:item] == item
+            if item_hash[:count] >= element[:num] && coupons_items.include?(item)
+              coupons_items.delete_at(coupons.index(element)) #check to see if there are more items than the coupon covers
+                item_count = item_hash[:count]
+                cart_coupon = Hash.new
+                cart_coupon["#{item} W/COUPON"] = {}
+                cart_coupon["#{item} W/COUPON"][:price] = element[:cost]
+                cart_coupon["#{item} W/COUPON"][:clearance] = item_hash[:clearance]
+                cart_coupon["#{item} W/COUPON"][:count] = 1
+                cart =  cart.merge(cart_coupon)
+                item_count =  item_count - element[:num]
+            end
+
+            if item_count >= 0 # build a new key:value pair based on the remaining items and if the coupon array is empty
+                cart[item] = {}
+                cart[item][:price] = item_hash[:price]
+                cart[item][:clearance] = item_hash[:clearance]
+                cart[item][:count] = item_count
+                #item_count = 0
+            end
+
+          #  binding.pry
+            #  item_count
+            if cart[item][:count] > element[:num]  && coupons_items.include?(item) #this is a bad way to do this I think
+              coupons_items.delete_at(coupons.index(element))
+              #could have recoreded how many coupons per food there were in the begining, then created
+              # the new hashes with that info
+              #modify the cart
+              #might not need to change the non coupon hash
+              cart["#{item} W/COUPON"][:count] = cart["#{item} W/COUPON"][:count] + 1
+              item_count = item_count - element[:num]
+              cart[item][:count] = cart[item][:count] - element[:num]
+              binding.pry
+              #after this it goes back up to the top and resets the values
+            end
+        #  end
+
+          if item_hash[:count] < element[:num]
+            cart[item] = item_hash
+          end
+        end
+      end
+    end
+  end
+    puts original_cart
+    puts original_coupons
+    puts coupons_items
+    puts cart
+    binding.pry
+  return cart
 end
 
+
+
 def apply_clearance(cart)
+#  cart.each
+#  binding.pry
+
+
   # code here
 end
 
@@ -111,6 +262,34 @@ def cart
     {"SOY MILK" => {:price => 4.50, :clearance => true}},
     {"KALE" => {:price => 3.00, :clearance => false}}
   ]
+end
+
+
+def cart
+  [
+    {"PEANUTBUTTER" => {:price => 3.00, :clearance => true}},
+    {"AVOCADO" => {:price => 3.00, :clearance => true}},
+    {"AVOCADO" => {:price => 3.00, :clearance => true}},
+    {"AVOCADO" => {:price => 3.00, :clearance => true}},
+    {"KALE" => {:price => 3.00, :clearance => false}},
+    {"CHEESE" => {:price => 6.50, :clearance => false}},
+    {"BEER" => {:price => 13.00, :clearance => false}},
+    {"BEETS" => {:price => 2.50, :clearance => false}},
+    {"SOY MILK" => {:price => 4.50, :clearance => true}},
+    {"KALE" => {:price => 3.00, :clearance => false}}
+  ]
+end
+
+def cart
+
+    {"AVOCADO"=>{:count=>5, :price=>3.0, :clearance=>true}}
+
+end
+def coupons
+[
+  {:item=>"AVOCADO", :num=>2, :cost=>5.0, :place=>1},
+  {:item=>"AVOCADO", :num=>2, :cost=>5.0, :place=>2}
+]
 end
 
 
