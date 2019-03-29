@@ -187,6 +187,8 @@ def apply_clearance(cart)
   end
 end
 
+require 'pry'
+
 def checkout(cart, coupons)
 
   consolidate_cart(cart)
@@ -194,7 +196,7 @@ def checkout(cart, coupons)
 
 
 
-#  binding.pry
+  binding.pry
 
 
 
