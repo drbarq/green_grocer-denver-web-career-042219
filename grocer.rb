@@ -104,7 +104,7 @@ cart_hash = Hash.new
       end
 end
 =end
-=begin
+
 #man that was a doozy, applied what I learned from other labs to create and modify the hashes.
 #a space in the w/coupon sent me on a goose chase for a while
 #interesting to think about how to structure and explore data structures, and what to plan for
