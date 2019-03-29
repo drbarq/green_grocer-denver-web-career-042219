@@ -109,7 +109,7 @@ end
 #a space in the w/coupon sent me on a goose chase for a while
 #interesting to think about how to structure and explore data structures, and what to plan for
 # created an array which took the couopon item name and stored in array, once a coupon was removed that value was deleted.
-# I think there is an easier way to do this but this does work, i could also just 
+# I think there is an easier way to do this but this does work, i could also just
 require 'pry'
 def apply_coupons(cart, coupons)
 
