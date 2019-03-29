@@ -141,7 +141,7 @@ def apply_coupons(cart, coupons)
                 cart_coupon["#{item} W/COUPON"][:price] = element[:cost]
                 cart_coupon["#{item} W/COUPON"][:clearance] = item_hash[:clearance]
                 cart_coupon["#{item} W/COUPON"][:count] = 1
-                cart =  cart.merge(cart_coupon)
+                cart = cart.merge(cart_coupon)
                 item_count =  item_count - element[:num]
             end
 
