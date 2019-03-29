@@ -246,7 +246,7 @@ def checkout(cart, coupons)
     end
   end
 
-
+binding.pry
 
   discount = (1 - 0.2)
   
