@@ -180,7 +180,7 @@ def apply_clearance(cart)
 
   cart.each do |item, item_hash|
     if item_hash[:clearance] == true
-        
+      
 
 
 
