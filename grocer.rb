@@ -199,8 +199,6 @@ def apply_coupons(cart, coupons)
                 #item_count = 0
             end
 
-          #  binding.pry
-            #  item_count
             if cart[item][:count] > element[:num]  && coupons_items.include?(item) #this is a bad way to do this I think
               coupons_items.delete_at(coupons.index(element))
               #could have recoreded how many coupons per food there were in the begining, then created
