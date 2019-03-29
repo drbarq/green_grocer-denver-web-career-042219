@@ -196,12 +196,12 @@ def checkout(cart, coupons)
     coupons.each do |element| # grab each item name from the coupon hash
       coupons_items << element[:item]
     end
-
+binding.pry
     cart.each do |item, item_hash|
       if !coupons_items.include?(item)
         cart[item] = item_hash
       end
-binding.pry
+
       if coupons_items.include?(item)
         coupons.each do |element| #using find here returns the correct price on the coupon item
 
