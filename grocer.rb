@@ -22,7 +22,7 @@ def consolidate_cart(cart)
       end
     end
   end
-return cart
+#return cart
 end
 
 =begin
