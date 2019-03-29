@@ -255,8 +255,8 @@ def checkout(cart, coupons)
     end
   end
 
-  
-  return cart
+
+  #return cart
 
 
 
