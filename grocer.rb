@@ -190,11 +190,10 @@ end
 def checkout(cart, coupons)
 
 
-  #binding.pry
+  binding.pry
 
 
 
-  # code here
 end
 
 
