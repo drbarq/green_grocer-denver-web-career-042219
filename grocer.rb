@@ -108,55 +108,7 @@ end
 #man that was a doozy, applied what I learned from other labs to create and modify the hashes.
 #a space in the w/coupon sent me on a goose chase for a while
 #interesting to think about how to structure and explore data structures, and what to plan for
-require 'pry'
-def apply_coupons(cart, coupons)
-  cart_coupon = Hash.new
-  coupons_items = Array.new
-  original_cart = cart
 
-    coupons.each do |element| # grab each item name from the coupon hash
-      coupons_items << element[:item]
-    end
-
-    cart.each do |item, item_hash|
-      if !coupons_items.include?(item)
-        cart[item] = item_hash
-      end
-      if coupons_items.include?(item)
-        coupons.find do |element| #using find here returns the correct price on the coupon item
-          if element[:item] == item
-            if item_hash[:count] >= element[:num] #check to see if there are more items than the coupon covers
-                item_count = item_hash[:count]
-                cart_coupon = Hash.new
-                cart_coupon["#{item} W/COUPON"] = {}
-                cart_coupon["#{item} W/COUPON"][:price] = element[:cost]
-                cart_coupon["#{item} W/COUPON"][:clearance] = item_hash[:clearance]
-                cart_coupon["#{item} W/COUPON"][:count] = 1
-                cart =  cart.merge(cart_coupon)
-                item_count =  item_count - element[:num]
-
-              if item_count >= 0 # build a new key:value pair based on the remaining items
-                  cart[item] = {}
-                  cart[item][:price] = item_hash[:price]
-                  cart[item][:clearance] = item_hash[:clearance]
-                  cart[item][:count] = item_count
-                  #item_count = 0
-                end
-              end
-            if item_hash[:count] < element[:num]
-              cart[item] = item_hash
-            end
-          end
-        end
-      end
-    end
-    puts original_cart
-    puts coupons
-    puts cart
-  return cart
-end
-=end
-#everything works but the last one, gonna try a while loop
 
 # it all works except the last question.  basing things off that coupons instance array is a bitch.
 require 'pry'
