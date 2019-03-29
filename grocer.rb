@@ -212,7 +212,7 @@ end
 def checkout(cart, coupons)
 
 
-  binding.pry
+  #binding.pry
 
 
 
