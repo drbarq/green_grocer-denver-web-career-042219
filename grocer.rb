@@ -198,7 +198,7 @@ def checkout(cart, coupons)
     end
 
     cart[0].each do |item, item_hash|
-      binding.pry
+    #  binding.pry
       if !coupons_items.include?(item)
         cart[item] = item_hash
       end
