@@ -177,6 +177,7 @@ end
 
 def apply_clearance(cart)
 
+  discount = 
 
   cart.each do |item, item_hash|
     if item_hash[:clearance] == true
