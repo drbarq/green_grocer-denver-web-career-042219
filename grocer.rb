@@ -186,6 +186,27 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
+  cart_hash = Hash.new
+
+  cart.each do |element|
+    element.each do |item, item_hash|
+      if cart_hash.has_key?(item)
+        cart_hash[item][:count] = (cart_hash[item][:count] + 1)
+      end
+
+      item_hash.each do |k, v|
+        if !cart_hash.has_key?(item)
+          cart_hash[item] = {}
+          cart_hash[item] = {:count => 1}
+        end
+        if !cart_hash[item].has_key?(k)
+          cart_hash[item][k] = v
+        end
+      end
+    end
+  end
+return cart_hash
+end
   
 
   binding.pry
