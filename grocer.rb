@@ -188,6 +188,7 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
+  
   coupons_items = Array.new
   original_cart = cart
   original_coupons = coupons
@@ -200,7 +201,7 @@ def checkout(cart, coupons)
       if !coupons_items.include?(item)
         cart[item] = item_hash
       end
-
+binding.pry
       if coupons_items.include?(item)
         coupons.each do |element| #using find here returns the correct price on the coupon item
 
@@ -246,7 +247,7 @@ def checkout(cart, coupons)
     end
   end
 
-binding.pry
+
 
   discount = (1 - 0.2)
 
