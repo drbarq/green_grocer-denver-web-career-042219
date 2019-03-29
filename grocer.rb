@@ -198,7 +198,7 @@ def checkout(cart, coupons)
 
 
   do |item, item_hash|
-    if 
+    if
 
 binding.pry
   end
