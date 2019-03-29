@@ -219,11 +219,6 @@ def apply_coupons(cart, coupons)
       end
     end
   end
-    puts original_cart
-    puts original_coupons
-    puts coupons_items
-    puts cart
-  #  binding.pry
   return cart
 end
 
