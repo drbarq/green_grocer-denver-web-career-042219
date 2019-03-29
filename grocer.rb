@@ -182,12 +182,9 @@ def apply_clearance(cart)
     item_hash.each |k, v|
 
       binding.pry
-    end 
-
+    end
   end
 
-
-  # code here
 end
 
 def checkout(cart, coupons)
