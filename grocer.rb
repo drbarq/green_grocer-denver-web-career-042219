@@ -158,7 +158,7 @@ end
 =end
 #everything works but the last one, gonna try a while loop
 
-# it all works except the last question.  basing things off that coupons instance array is a bitch.  
+# it all works except the last question.  basing things off that coupons instance array is a bitch.
 require 'pry'
 def apply_coupons(cart, coupons)
   #cart_coupon = Hash.new
@@ -226,7 +226,7 @@ def apply_coupons(cart, coupons)
     puts original_coupons
     puts coupons_items
     puts cart
-    binding.pry
+  #  binding.pry
   return cart
 end
 
