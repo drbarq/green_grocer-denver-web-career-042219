@@ -132,7 +132,7 @@ def apply_coupons(cart, coupons)
         coupons.each do |element| #using find here returns the correct price on the coupon item
 
          if element[:item] == item && coupons_items.include?(item)
-           binding.pry
+           
             if item_hash[:count] >= element[:num]
               coupons_items.delete_at(coupons.index(element)) #check to see if there are more items than the coupon covers
                 item_count = item_hash[:count]
@@ -145,6 +145,7 @@ def apply_coupons(cart, coupons)
                 item_count =  item_count - element[:num]
             end
 
+              binding.pry
             if item_count >= 0 # build a new key:value pair based on the remaining items and if the coupon array is empty
                 cart[item] = {}
                 cart[item][:price] = item_hash[:price]
