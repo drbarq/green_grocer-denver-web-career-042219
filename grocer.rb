@@ -193,7 +193,12 @@ def checkout(cart, coupons)
 
   #consolidate_cart(cart)
 
-  apply_coupons(consolidate_cart(cart), coupons).each do |item, item_hash|
+  apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
+
+
+
+  do |item, item_hash|
+    if 
 
 binding.pry
   end
