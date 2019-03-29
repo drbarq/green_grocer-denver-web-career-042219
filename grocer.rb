@@ -193,16 +193,10 @@ def checkout(cart, coupons)
 
   #consolidate_cart(cart)
 
-  apply_coupons(consolidate_cart(cart), coupons)
+  apply_coupons(consolidate_cart(cart), coupons).each do |item, item_hash|
 
-#  consolidate_cart(cart).each do | |
-
-
-
-
-  binding.pry
-
-
+binding.pry
+  end 
 
 
 end
