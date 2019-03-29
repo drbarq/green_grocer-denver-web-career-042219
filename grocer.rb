@@ -109,8 +109,6 @@ end
 #a space in the w/coupon sent me on a goose chase for a while
 #interesting to think about how to structure and explore data structures, and what to plan for
 
-
-# it all works except the last question.  basing things off that coupons instance array is a bitch.
 require 'pry'
 def apply_coupons(cart, coupons)
   #cart_coupon = Hash.new
