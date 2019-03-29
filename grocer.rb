@@ -194,7 +194,7 @@ def checkout(cart, coupons)
 
 
 
-  binding.pry
+#  binding.pry
 
 
 
@@ -248,6 +248,7 @@ def coupons
   {:item=>"AVOCADO", :num=>2, :cost=>5.0, :place=>2}
 ]
 end
+
 
 
 def coupons
