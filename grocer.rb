@@ -249,6 +249,7 @@ def checkout(cart, coupons)
 
 
   discount = (1 - 0.2)
+  
   cart.each do |item, item_hash|
     if item_hash[:clearance] == true
       item_hash[:price] = (item_hash[:price] * discount).round(2)
