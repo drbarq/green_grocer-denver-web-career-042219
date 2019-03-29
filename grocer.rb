@@ -177,11 +177,11 @@ end
 
 def apply_clearance(cart)
 
-  discount = 
+  discount = 0.8
 
   cart.each do |item, item_hash|
     if item_hash[:clearance] == true
-      item_hash[:price] = (item_hash[:price] * .8)
+      item_hash[:price] = (item_hash[:price] * 8)
 
 
 
