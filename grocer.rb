@@ -196,7 +196,7 @@ def checkout(cart, coupons)
   apply_coupons(consolidate_cart(cart), coupons).each do |item, item_hash|
 
 binding.pry
-  end 
+  end
 
 
 end
