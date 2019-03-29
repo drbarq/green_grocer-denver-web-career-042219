@@ -226,7 +226,7 @@ def apply_coupons(cart, coupons)
     puts original_coupons
     puts coupons_items
     puts cart
-  #  binding.pry
+    binding.pry
   return cart
 end
 
