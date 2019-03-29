@@ -195,7 +195,7 @@ def checkout(cart, coupons)
 
   apply_coupons(consolidate_cart(cart), coupons)
 
-  consolidate_cart(cart).each do |
+#  consolidate_cart(cart).each do | |
 
 
 
