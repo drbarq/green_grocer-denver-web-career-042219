@@ -211,11 +211,11 @@ def apply_coupons(cart, coupons)
               #binding.pry
               #after this it goes back up to the top and resets the values
             end
-        #  end
 
           if item_hash[:count] < element[:num]
             cart[item] = item_hash
           end
+          
         end
       end
     end
