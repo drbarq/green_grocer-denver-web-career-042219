@@ -16,13 +16,13 @@ def consolidate_cart(cart)
           cart[item] = {}
           cart[item] = {:count => 1}
         end
-        if !cart_hash[item].has_key?(k)
-          cart_hash[item][k] = v
+        if !cart[item].has_key?(k)
+          cart[item][k] = v
         end
       end
     end
   end
-return cart_hash
+return cart
 end
 
 =begin
