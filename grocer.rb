@@ -196,7 +196,6 @@ def apply_coupons(cart, coupons)
                 cart[item][:price] = item_hash[:price]
                 cart[item][:clearance] = item_hash[:clearance]
                 cart[item][:count] = item_count
-                #item_count = 0
             end
 
             if cart[item][:count] > element[:num]  && coupons_items.include?(item) #this is a bad way to do this I think
@@ -215,7 +214,7 @@ def apply_coupons(cart, coupons)
           if item_hash[:count] < element[:num]
             cart[item] = item_hash
           end
-          
+
         end
       end
     end
