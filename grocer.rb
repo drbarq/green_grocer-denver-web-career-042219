@@ -188,7 +188,7 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  
+
   coupons_items = Array.new
   original_cart = cart
   original_coupons = coupons
