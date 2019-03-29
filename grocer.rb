@@ -198,7 +198,7 @@ def apply_coupons(cart, coupons)
                 cart[item][:count] = item_count
             end
 
-            if cart[item][:count] > element[:num]  && coupons_items.include?(item) #this is a bad way to do this I think
+            if cart[item][:count] > element[:num] # && coupons_items.include?(item) #this is a bad way to do this I think
               coupons_items.delete_at(coupons.index(element))
               #could have recoreded how many coupons per food there were in the begining, then created
               # the new hashes with that info
