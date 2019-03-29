@@ -207,7 +207,7 @@ def checkout(cart, coupons)
   end
 return cart_hash
 end
-  
+
 
   binding.pry
 
