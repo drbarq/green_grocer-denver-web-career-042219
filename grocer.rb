@@ -177,7 +177,7 @@ def apply_coupons(cart, coupons)
 
       if coupons_items.include?(item)
         coupons.each do |element| #using find here returns the correct price on the coupon item
-                                  #remove that coupon from the array
+                                  
          if element[:item] == item && coupons_items.include?(item)
             if item_hash[:count] >= element[:num] && coupons_items.include?(item)
               coupons_items.delete_at(coupons.index(element)) #check to see if there are more items than the coupon covers
