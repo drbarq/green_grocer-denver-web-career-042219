@@ -210,7 +210,7 @@ def apply_coupons(cart, coupons)
               cart["#{item} W/COUPON"][:count] = cart["#{item} W/COUPON"][:count] + 1
               item_count = item_count - element[:num]
               cart[item][:count] = cart[item][:count] - element[:num]
-              binding.pry
+              #binding.pry
               #after this it goes back up to the top and resets the values
             end
         #  end
