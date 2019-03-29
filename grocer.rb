@@ -191,7 +191,7 @@ require 'pry'
 
 def checkout(cart, coupons)
 
-  consolidate_cart(cart)
+  puts consolidate_cart(cart)
 
 
 
