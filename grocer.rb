@@ -180,6 +180,7 @@ def apply_clearance(cart)
 
   cart.each do |item, item_hash|
     item_hash.each do |k, v|
+       
 
       binding.pry
     end
