@@ -3,29 +3,7 @@ require 'pry'
 
 #used a similar idea to what i learned on pigeon.  build the hash in steps.  since each key:value does not include an array
 #I could use two.  Also nested a count incrementer to catch them before
-def consolidate_cart(cart)
 
-  cart.each do |element|
-    element.each do |item, item_hash|
-      if cart.has_key?(item)
-        cart[item][:count] = (cart[item][:count] + 1)
-      end
-
-      item_hash.each do |k, v|
-        if !cart.has_key?(item)
-          cart[item] = {}
-          cart[item] = {:count => 1}
-        end
-        if !cart[item].has_key?(k)
-          cart[item][k] = v
-        end
-      end
-    end
-  end
-#return cart
-end
-
-=begin
 def consolidate_cart(cart)
   cart_hash = Hash.new
 
@@ -48,7 +26,7 @@ def consolidate_cart(cart)
   end
 return cart_hash
 end
-=end
+
 
 #I think consolidate the cart first, bash up coupons, return a new hash
 =begin
